@@ -5,19 +5,19 @@ const ejs = require("ejs");
 
 const { Sequelize, DataTypes } = require("sequelize");
 
-// const user = "postgres";
-// const host = "localhost";
-// const database = "nodejs";
-// const password = "postgres";
+const user = "postgres";
+const host = "localhost";
+const database = "nodejs";
+const password = "postgres";
 
 // const port = "5432";
 
-const user = "bwvqltdafgcqkm";
-const host = "ec2-35-168-122-84.compute-1.amazonaws.com";
-const database = "defr6s0olb7ce0";
-const password =
-  "e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03";
-const portt = "5432";
+// const user = "bwvqltdafgcqkm";
+// const host = "ec2-35-168-122-84.compute-1.amazonaws.com";
+// const database = "defr6s0olb7ce0";
+// const password =
+//   "e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03";
+// const portt = "5432";
 
 // const sequelize = new Sequelize(database, user, password, {
 //   host: host,
@@ -33,17 +33,22 @@ const portt = "5432";
 // }
 
 // const Sequelize = require("sequelize");
-const sequelize = new Sequelize(database, user, password, {
-  host: host,
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
+// postgres://bwvqltdafgcqkm:e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03@ec2-35-168-122-84.compute-1.amazonaws.com:5432/defr6s0olb7ce0
+// const sequelize = new Sequelize(database, user, password, {
+const sequelize = new Sequelize(
+  " postgres://bwvqltdafgcqkm:e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03@ec2-35-168-122-84.compute-1.amazonaws.com:5432/defr6s0olb7ce0",
+  {
+    host: host,
+    dialect: "postgres",
+
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
     },
-  },
-});
+  }
+);
 
 sequelize
   .authenticate()
