@@ -4,7 +4,5 @@ Blog-With-Database-final
 npm-debug.log
 .DS_Store
 /*.env
-
-migrations
 node_modules
 seeders
