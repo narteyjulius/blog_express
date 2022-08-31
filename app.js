@@ -34,21 +34,20 @@ const password = "postgres";
 
 // const Sequelize = require("sequelize");
 // postgres://bwvqltdafgcqkm:e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03@ec2-35-168-122-84.compute-1.amazonaws.com:5432/defr6s0olb7ce0
-// const sequelize = new Sequelize(database, user, password, {
-const sequelize = new Sequelize(
-  " postgres://bwvqltdafgcqkm:e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03@ec2-35-168-122-84.compute-1.amazonaws.com:5432/defr6s0olb7ce0",
-  {
-    host: host,
-    dialect: "postgres",
+const sequelize = new Sequelize(database, user, password, {
+  // const sequelize = new Sequelize(
+  //   " postgres://bwvqltdafgcqkm:e3a32258aef6863ef3fb7bfe25ed97f49b4892e2e4eedd37d71be8a2116c5d03@ec2-35-168-122-84.compute-1.amazonaws.com:5432/defr6s0olb7ce0",
+  //   {
+  host: host,
+  dialect: "postgres",
 
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
-  }
-);
+  // dialectOptions: {
+  //   ssl: {
+  //     require: true,
+  //     rejectUnauthorized: false,
+  //   },
+  // },
+});
 
 sequelize
   .authenticate()
@@ -71,6 +70,8 @@ const Post = sequelize.define("Post", postSchema);
 
 // console.log(Post);
 
+const posts = [];
+
 const homeStartingContent =
   "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
 const aboutContent =
@@ -86,11 +87,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  Post.findAll({
-    where: { display: true },
-  }).then(function (posts) {
-    res.render("home", { startingContent: homeStartingContent, posts: posts });
-  });
+  // Post.findAll({
+  //   where: { display: true },
+  // }).then(function (posts) {
+  //   res.render("home", { startingContent: homeStartingContent, posts: posts });
+  // });
+  res.render("home", { startingContent: homeStartingContent, posts: posts });
 });
 
 app.get("/compose", function (req, res) {
