@@ -1,0 +1,10 @@
+Blog-With-Database-final/
+Blog-With-Database-final
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+config
+migrations
+node_modules
+seeders
